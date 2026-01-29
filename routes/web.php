@@ -1,7 +1,6 @@
 <?php
 
+use App\Http\Controllers\DataImportController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/import/movie', [DataImportController::class, 'import']);
