@@ -123,4 +123,7 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
+    'tmdb' => [
+        'key' => env('TMDB_API_KEY'),
+    ],
 ];
