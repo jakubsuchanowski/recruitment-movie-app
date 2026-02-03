@@ -1,4 +1,4 @@
-# Zadanie 
+# Movie App
 Aplikacji Laravel, która pobiera dane z API TMDB, zapisuje je w bazie danych i udostępnia własne REST API z obsługą wielu języków.
 Projekt działa w oparciu o 3 kontenery:
 - app (rec_movie_app),
