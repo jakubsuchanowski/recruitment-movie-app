@@ -4,13 +4,13 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: rec_movie_app
+    command: php artisan serve --host=0.0.0.0 --port=8000
     volumes: 
       - ./:/var/www/html
     ports:
       - "8000:8000"
     depends_on:
       - db
-    command: php artisan serve --host=0.0.0.0 --port=8000
 
   db: 
     image: mysql:8.0
@@ -21,10 +21,19 @@ services:
       MYSQL_USER: user
       MYSQL_PASSWORD: password
       MYSQL_ROOT_PASSWORD: password
-
     ports:
       - "3306:3306"
     volumes:
       - dbdata:/var/lib/mysql
+    
+  queue:
+    build: .
+    container_name: rec_movie_queue
+    command: php artisan queue:work 
+    depends_on: 
+      - db
+      - app
+    volumes:
+      - ./:/var/www/html
 volumes:
   dbdata:
